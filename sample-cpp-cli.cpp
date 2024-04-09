@@ -125,9 +125,9 @@ BOOL getUsbTenkiValues(const TCHAR* cmdline, float** values, int* n_values)
 		return false;
 	}
 	float* dst_value = *values;
-	char* c = chBuf;
 	for (char* c = chBuf; c; )
 	{
+		int i = strlen(c);
 		if (1 != sscanf_s(c, "%f", dst_value)) {
 			*dst_value = nanf("");
 		}
