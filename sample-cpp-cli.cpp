@@ -43,7 +43,7 @@ BOOL getUsbTenkiValues(const TCHAR* cmdline, float** values, int* n_values)
 
 	// Create a pipe for the child process's STDOUT.
 	if (!CreatePipe(&g_hChildStd_OUT_Rd, &g_hChildStd_OUT_Wr, &saAttr, 0)) {
-		fprintf(stderr, "Could not create pipen");
+		fprintf(stderr, "Could not create pipe\n");
 		return false;
 	}
 
@@ -86,7 +86,7 @@ BOOL getUsbTenkiValues(const TCHAR* cmdline, float** values, int* n_values)
 
 	if (!bSuccess) {
 		CloseHandle(g_hChildStd_OUT_Rd);
-		fprintf(stderr, "Could not run dracal-usb-getn");
+		fprintf(stderr, "Could not run dracal-usb-get\n");
 		return false;
 	}
 
@@ -106,7 +106,7 @@ BOOL getUsbTenkiValues(const TCHAR* cmdline, float** values, int* n_values)
 	CloseHandle(g_hChildStd_OUT_Rd);
 
 	if (!bSuccess) {
-		fprintf(stderr, "Could not read from dracal-usb-getn");
+		fprintf(stderr, "Could not read from dracal-usb-get\n");
 		return false;
 	}
 
@@ -121,7 +121,7 @@ BOOL getUsbTenkiValues(const TCHAR* cmdline, float** values, int* n_values)
 	*n_values = fields;
 	*values = (float*)calloc(fields, sizeof(float));
 	if (!*values) {
-		fprintf(stderr, "Could not allocate memory for array of valuesn");
+		fprintf(stderr, "Could not allocate memory for array of values\n");
 		return false;
 	}
 	float* dst_value = *values;
@@ -156,7 +156,7 @@ int main()
 		// We run dracal-usb-get with the -i 0,1,2 argument which requests
 		// exactly 3 channels. Getting any other quantity is therefore an error.
 		if (n_values != 3) {
-			fprintf(stderr, "dracal-usb-get returned wrong number of fieldsn");
+			fprintf(stderr, "dracal-usb-get returned wrong number of fields\n");
 			return -1;
 		}
 		else {
