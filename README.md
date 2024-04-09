@@ -35,7 +35,7 @@ Run
 ```
 
 ## Sample output
-
+<img src="https://github.com/Dracaltech/sample-cpp-cli/assets/1357711/010855b0-946a-4352-9461-25f7bdb8b57d" width=400 />
 
 ```
 Pressure. (kPa): 102.98
